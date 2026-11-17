@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="CV of Donggu Kang, a software engineer focused on performance engineering, automation and sustainable software.">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Donggu Kang CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400..700&family=Poppins:wght@600&display=swap">
+<style>
+/* Layout: a pale blue identity panel (who, what, stack, contact) pinned on the
+   left; workplaces flow on the right, newest first, each with its own colour,
+   its years set large, one project and two image plates. */
+:root {
+  --paper: hsl(0 0% 100%);
+  --ink: hsl(234 40% 12%);
+  --mute: hsl(234 12% 38%);
+  --rule: hsl(234 20% 86%);
+  --panel: hsl(225 45% 94%);
+  --band: hsl(240 6% 95%);
+  --on-band: hsl(234 40% 12%);
+  --band-soft: hsl(234 18% 30%);
+  --on-panel: hsl(234 40% 12%);
+  --panel-soft: hsl(234 14% 34%);
+  --accent: #b92b27;
+  --c1: #b92b27;
+  --c2: #f05623;
+  --c3: #006cb6;
+  --c4: hsl(152 78% 27%);
+  --c5: hsl(188 92% 27%);
+  --c6: #750014;
+  --gold: hsl(43 92% 46%);
+  --silver: hsl(220 10% 62%);
+
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+
+  --t-small: 0.9375rem;
+  --t-body: 1.0625rem;
+  --t-h3: 1.375rem;
+  --t-h2: 1.625rem;
+  --t-years: clamp(2rem, 3.6vw, 2.75rem);
+  --t-metric: clamp(2.25rem, 4vw, 3.05rem);
+  --t-name: 2.75rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: hsl(234 30% 9%);
+    --ink: hsl(234 30% 93%);
+    --mute: hsl(234 14% 68%);
+    --rule: hsl(234 20% 22%);
+    --panel: hsl(228 30% 15%);
+    --on-panel: hsl(228 30% 93%);
+    --panel-soft: hsl(228 14% 70%);
+    --accent: hsl(2 80% 68%);
+    --c1: hsl(2 80% 68%);
+    --c2: hsl(15 95% 64%);
+    --c3: hsl(204 90% 66%);
+    --c4: hsl(150 62% 60%);
+    --c5: hsl(188 70% 58%);
+    --c6: hsl(350 78% 70%);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: hsl(234 30% 9%);
+  --ink: hsl(234 30% 93%);
+  --mute: hsl(234 14% 68%);
+  --rule: hsl(234 20% 22%);
+  --panel: hsl(228 30% 15%);
+    --on-panel: hsl(228 30% 93%);
+    --panel-soft: hsl(228 14% 70%);
+    --accent: hsl(2 80% 68%);
+  --c1: hsl(2 80% 68%);
+  --c2: hsl(15 95% 64%);
+  --c3: hsl(204 90% 66%);
+  --c4: hsl(150 62% 60%);
+    --c5: hsl(188 70% 58%);
+    --c6: hsl(350 78% 70%);
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────── */
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--t-body)/1.5 var(--body);
+  padding-block: clamp(16px, 2.5vw, 32px);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p, ul, dl, figure { margin: 0; }
+ul { list-style: none; padding: 0; }
+a { color: inherit; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+.page {
+  max-width: 1240px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+/* ─── Identity Panel ────────────────────────────────────────────────────── */
+
+.panel {
+  align-self: stretch;
+  padding: 48px 36px;
+  background: var(--panel);
+  color: var(--on-panel);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.panel-inner { display: grid; gap: 56px; align-content: start; }
+@media screen and (min-width: 981px) and (min-height: 880px) {
+  .panel-inner { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 80px); }
+}
+.name {
+  font: 600 var(--t-name)/1 "Poppins", var(--display);
+  font-stretch: 100%;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.title { margin-top: 1em; font: 500 1.375rem/1.3 var(--display); font-stretch: 100%; white-space: nowrap; color: var(--panel-soft); }
+.side { --mark: 20px; --mark-gap: 12px; }
+.side h2 {
+  position: relative;
+  margin-bottom: 16px;
+  padding: 12px 0 0 14px;
+  font: 850 0.9375rem/1.2 var(--display);
+  font-stretch: 118%;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-panel);
+}
+.side h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  border-top: 5px solid var(--accent);
+  border-left: 5px solid var(--accent);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.thesis { line-height: 1.6; color: var(--panel-soft); }
+.thesis b { font-weight: 650; color: var(--on-panel); }
+.contact { display: grid; gap: 12px; }
+.contact li { display: grid; grid-template-columns: var(--mark) minmax(0, 1fr); gap: var(--mark-gap); align-items: center; }
+.contact svg { width: var(--mark); height: var(--mark); fill: none; stroke: var(--accent); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.contact a { text-decoration: none; overflow-wrap: anywhere; }
+.contact a:hover { text-decoration: underline; }
+
+/* ─── Workplaces ────────────────────────────────────────────────────────── */
+
+.jobs { display: grid; gap: clamp(56px, 7vw, 88px); padding-block: 48px; }
+.page { row-gap: 0; }
+.p-head {
+  grid-column: 1 / -1;
+  padding: 44px 36px 0;
+  position: relative;
+  z-index: 1;
+  border-block: 2px solid var(--on-band);
+  background: var(--band);
+  color: var(--on-band);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.p-head .title { color: var(--band-soft); }
+@media screen and (min-width: 981px) {
+  :root { --t-name: 4rem; }
+  /* The sidebar colour runs from the very top; the band is laid across it. */
+  .page::before { content: ""; grid-column: 1; grid-row: 1 / span 2; align-self: stretch; background: var(--panel); }
+  .p-head { grid-row: 1; margin: 56px -12px 0; padding: 34px 48px 36px; box-shadow: 0 6px 14px hsl(230 30% 30% / 0.1); }
+  .p-head::before, .p-head::after { content: ""; position: absolute; top: 100%; border-style: solid; }
+  .p-head::before { left: 0; border-width: 0 12px 10px 0; border-color: transparent var(--on-band) transparent transparent; }
+  .p-head::after { right: 0; border-width: 10px 12px 0 0; border-color: var(--on-band) transparent transparent transparent; }
+  .panel { grid-column: 1; grid-row: 2; padding-top: 44px; }
+  .jobs { grid-column: 2; grid-row: 2; }
+}
+.job { display: grid; gap: 22px; }
+.work { display: grid; gap: 22px; break-inside: avoid; }
+.work + .work { margin-top: 26px; }
+.work + .work .project { border-top-width: 1px; }
+.work + .work .metric b { font-size: clamp(1.75rem, 3vw, 2.25rem); }
+.work + .work .project h3 { font-size: 1.1875rem; }
+.job-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 24px; break-after: avoid; }
+.job-head > * { grid-column: 1; }
+.co-logo { grid-column: 2; grid-row: 1 / span 2; align-self: center; width: auto; height: 44px; max-width: 170px; object-fit: contain; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.job h2 {
+  font: 850 var(--t-years)/0.95 var(--display);
+  font-stretch: 118%;
+  letter-spacing: -0.03em;
+  color: var(--c);
+}
+.when { color: var(--mute); }
+.when b { margin-right: 12px; font: 700 var(--t-h3)/1.2 var(--display); font-stretch: 106%; font-variant-numeric: tabular-nums; color: var(--ink); }
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px clamp(12px, 2vw, 20px);
+  align-items: start;
+  padding-top: 18px;
+  border-top: 4px solid var(--c);
+}
+.project h3 { font: 700 var(--t-h3)/1.2 var(--display); font-stretch: 106%; margin-bottom: 4px; }
+.project p { max-width: 52ch; }
+.metric { font-variant-numeric: tabular-nums; }
+.metric b { display: block; font: 850 var(--t-metric)/1 var(--display); font-stretch: 106%; letter-spacing: -0.03em; color: var(--c); }
+.metric span { display: block; margin-top: 6px; color: var(--mute); }
+.feats { border-top: 4px solid var(--c); }
+.feats li {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 4px 20px;
+  align-items: baseline;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--rule);
+  break-inside: avoid;
+}
+.feats time { font: 700 var(--t-h3)/1.2 var(--display); font-stretch: 106%; font-variant-numeric: tabular-nums; color: var(--c); }
+.feats b { display: block; font: 700 var(--t-h3)/1.25 var(--display); font-stretch: 106%; }
+.feats span { color: var(--mute); }
+.feats + .group { margin-top: 22px; }
+.group .aside { display: block; margin-top: 4px; font: 400 var(--t-body)/1.45 var(--body); font-stretch: normal; color: var(--mute); }
+.group:has(.aside) { margin-bottom: -4px; }
+.group { margin-bottom: -10px; font: 750 var(--t-h3)/1.2 var(--display); font-stretch: 108%; color: var(--c); break-after: avoid; }
+.feats.gains li { grid-template-columns: 3.5rem 88px minmax(0, auto) minmax(20px, 1fr) auto; }
+.feats.gains li > div:not(.plates) { grid-column: 3; }
+.feats.gains li:not(:has(.gain)) > div:not(.plates) { grid-column: 3 / -1; }
+.feats.gains .logo { align-self: start; object-position: center top; }
+.icon { position: relative; display: block; align-self: start; width: 88px; }
+.icon .logo { display: block; }
+.badge { position: absolute; right: 4px; top: 30px; width: 30px; height: 30px; padding: 4px; border-radius: 50%; background: var(--paper); box-shadow: 0 0 0 1.5px var(--rule); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.lead { grid-column: 4; align-self: start; margin-top: 0.95em; border-top: 2px dotted var(--c); opacity: 0.55; }
+.gain { grid-column: 5; text-align: right; align-self: start; }
+.gain b { display: block; font: 850 clamp(1.9rem, 3.2vw, 2.6rem)/0.95 var(--display); font-stretch: 106%; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--c); white-space: nowrap; }
+.arr { width: 0.95em; height: 0.58em; vertical-align: 0.07em; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.feats .gain span { display: block; margin-top: 6px; font-size: var(--t-small); }
+.feats.gains .plates { grid-column: 3 / -1; margin-top: 12px; }
+.feats.gains li > div.more, .feats.gains li:not(:has(.gain)) > div.more { grid-column: 3 / -1; }
+.more { position: relative; z-index: 1; }
+.more .lede { margin-top: 4px; }
+.feats.sub { border-top-width: 1px; }
+.shot { display: block; width: 100%; max-width: 560px; height: auto; margin-top: 14px; border: 1px solid var(--rule); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.feats.gap { margin-top: 26px; border-top-color: var(--c); }
+.feats a { text-decoration-color: var(--c); text-decoration-thickness: 2px; }
+.feats li { position: relative; }
+.feats b > a::after { content: ""; position: absolute; inset: 0; }
+.feats .points a { position: relative; z-index: 1; }
+.lede { margin-top: 8px; }
+.lede code { font: 500 0.875em/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace; overflow-wrap: anywhere; padding: 2px 5px; border-radius: 4px; background: hsl(240 6% 93%); -webkit-box-decoration-break: clone; box-decoration-break: clone; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.feats li:has(> div > b > a:hover) { background: color-mix(in srgb, var(--c) 7%, transparent); }
+.feats b > a:focus-visible { outline: none; }
+.feats b > a:focus-visible::after { outline: 2px solid var(--c); outline-offset: -2px; }
+.feats.logos li { grid-template-columns: 3.5rem 88px minmax(0, 1fr); }
+.logo { width: 88px; height: 52px; margin-top: 0.3rem; object-fit: contain; object-position: center top; align-self: start; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.points { display: grid; gap: 6px; margin-top: 10px; padding-left: 1.1em; list-style: disc; max-width: 68ch; }
+.feats .points li { display: list-item; padding: 0; border: 0; }
+.points.sub { margin-top: 6px; gap: 4px; list-style: circle; font-size: var(--t-body); }
+.duties { margin-top: 0; padding-top: 18px; padding-left: 1.1em; border-top: 4px solid var(--c); font-size: 1.125rem; }
+.feats li:has(.points) .logo { align-self: start; }
+.points li::marker { color: var(--c); }
+.medal { width: 1.15em; height: 1.15em; margin-right: 6px; vertical-align: -0.2em; }
+.medal.gold { color: var(--gold); }
+.medal.silver { color: var(--silver); }
+.project.solo { grid-template-columns: minmax(0, 1fr); }
+.project.solo p { max-width: 68ch; }
+.plates.fit img { aspect-ratio: auto; object-fit: contain; background: #fff; }
+.plates.one { grid-template-columns: minmax(0, 1fr); }
+.plates.quad { grid-template-columns: repeat(2, minmax(0, 300px)); gap: 12px; }
+.plates.quad img { width: 100%; height: auto; aspect-ratio: 3 / 2; }
+.plates.one img { max-width: 720px; }
+.project h3 a { text-decoration-color: var(--c); text-decoration-thickness: 2px; }
+.work + .group { margin-top: 22px; }
+.with-mark { display: flex; align-items: center; gap: 16px; }
+.mark { width: auto; height: 52px; flex: none; }
+.plates { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 20px); }
+.plates img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+
+/* ─── Narrow Screens ────────────────────────────────────────────────────── */
+
+@media screen and (max-width: 980px) {
+  .page { grid-template-columns: minmax(0, 1fr); }
+  .p-head { padding: 30px 28px; }
+  .panel { padding: 32px 28px 36px; }
+  .panel-inner { gap: 36px; }
+  .jobs { padding-block: 40px 8px; }
+}
+@media screen and (max-width: 600px) {
+  .project { grid-template-columns: minmax(0, 1fr); }
+  .co-logo { height: 30px; max-width: 110px; }
+  .feats li, .feats.logos li { grid-template-columns: 3.5rem minmax(0, 1fr); }
+  .feats.logos li { grid-template-columns: 3.5rem 48px minmax(0, 1fr); gap: 4px 12px; }
+  .feats.gains li { grid-template-columns: 3.5rem 48px minmax(0, 1fr); gap: 4px 12px; }
+  .feats.gains li > div:not(.plates), .feats.gains li:not(:has(.gain)) > div:not(.plates) { grid-column: 3; }
+  .lead { display: none; }
+  .gain { grid-column: 3; text-align: left; margin-top: 6px; }
+  .feats.gains .plates { grid-column: 1 / -1; }
+  .feats.gains li > div.more, .feats.gains li:not(:has(.gain)) > div.more { grid-column: 3; }
+  .feats time { font-size: 1rem; }
+  .logo { width: 48px; height: 32px; }
+  .icon { width: 48px; }
+  .badge { right: -2px; top: 18px; width: 22px; height: 22px; padding: 3px; }
+  .plates { grid-template-columns: minmax(0, 1fr); }
+  :root { --t-name: 2.6rem; }
+  .title { font-size: 1.125rem; }
+  .plates.quad { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ─── Print ─────────────────────────────────────────────────────────────── */
+
+@page { size: A4; margin: 11mm; }
+@media print {
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] {
+    color-scheme: light;
+    --paper: #fff;
+    --ink: hsl(234 40% 12%);
+    --mute: hsl(234 12% 34%);
+    --rule: hsl(234 16% 80%);
+    --panel: hsl(225 45% 94%);
+    --on-panel: hsl(234 40% 12%);
+    --panel-soft: hsl(234 14% 34%);
+    --accent: #b92b27;
+    --c1: #b92b27;
+    --c2: #f05623;
+    --c3: #006cb6;
+    --c4: hsl(152 78% 27%);
+    --c5: hsl(188 92% 27%);
+    --c6: #750014;
+    --t-name: 2.2rem;
+    --t-years: 1.7rem;
+  }
+  html { font-size: 9.5pt; }
+  body { padding: 0; }
+  .page { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
+  .p-head { padding: 12px 20px; }
+  .panel { padding: 12px 20px 16px; }
+  .panel-inner { grid-template-columns: 1fr 1fr; gap: 10px 24px; align-items: start; }
+  .p-about { grid-area: 1 / 1; }
+  .p-contact { grid-area: 1 / 2; }
+  .side { --mark: 13px; --mark-gap: 8px; }
+  .side h2 { margin-bottom: 8px; padding: 8px 0 0 10px; }
+  .side h2::before { width: 15px; height: 15px; border-width: 3.5px; }
+  .thesis { line-height: 1.4; }
+  .contact { gap: 5px; }
+  .jobs { gap: 12px; padding: 20px 0 0; }
+  .job, .work { gap: 10px; }
+  .feats li { padding-block: 4px; }
+  .feats li > div { display: flex; flex-wrap: wrap; gap: 0 12px; align-items: baseline; }
+  .feats b, .feats time { font-size: 1.1rem; }
+  .shot { max-width: 215px; margin-top: 5px; }
+  .plates.one { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plates.fit img { max-width: 100% !important; max-height: 150px; width: auto; justify-self: start; }
+  .plates.quad { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 520px; }
+  .plates.quad img { width: 100%; max-height: none; }
+  .work + .group { margin-top: 8px; }
+  .mark { height: 30px; }
+  .logo { width: 44px; height: 22px; }
+  .icon { width: 44px; }
+  .badge { right: -2px; top: 12px; width: 16px; height: 16px; padding: 2px; }
+  .co-logo { height: 26px; max-width: 110px; }
+  .feats.logos li { grid-template-columns: 3.5rem 44px minmax(0, 1fr); }
+  .feats.gains li { grid-template-columns: 3.5rem 44px minmax(0, auto) minmax(12px, 1fr) auto; }
+  .feats li > .plates { display: grid; }
+  .gain b { font-size: 1.7rem; }
+  .points { gap: 3px; }
+  .work + .work { margin-top: 8px; }
+  .metric b { font-size: 2.2rem; }
+  .work + .work .metric b { font-size: 1.6rem; }
+  .plates img { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a, .feats a { text-decoration: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="medal" viewBox="0 0 24 24"><path d="M7.5 2 12 9.5 16.5 2" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="12" cy="15" r="6.5" fill="currentColor"/></symbol></svg>
+<div class="page">
+  <header class="p-head">
+    <h1 class="name">Donggu Kang</h1>
+    <p class="title">Software Engineer, Problem Solver</p>
+  </header>
+  <div class="panel">
+    <div class="panel-inner">
+
+      <section class="side p-about" aria-labelledby="s-about">
+        <h2 id="s-about">About</h2>
+        <p class="thesis">I build software like a passive house:<span style="display: block; text-align: right">airtight,<br>self-regulating,<br>energy-efficient,<br>made to last a century.</span></p>
+      </section>
+
+      <section class="side p-contact" aria-labelledby="s-contact">
+        <h2 id="s-contact">Contact</h2>
+        <ul class="contact">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg><a href="mailto:donggu@rustic.dev">donggu@rustic.dev</a></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16"/></svg><a href="https://github.com/elbaro">github.com/elbaro</a></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 0 0-14 0C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Seoul · GMT+9</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <main class="jobs">
+    <article class="job" style="--c: var(--c4)">
+      <div class="job-head">
+        <h2>Rustic Dev</h2>
+        <p class="when"><b>Current</b></p>
+      </div>
+      <ul class="feats gains">
+        <li><time>2026</time><img class="logo" src="assets/logos/ezel.svg" alt="ezel logo"><div><b><a href="https://elbaro.github.io/ezel/">ezel</a></b><span>A modern visualization library in Rust, Python, JS.</span>
+          <p class="lede">GPU-accelerated rendering and incremental data updates.<br>Most libraries are reactive but not incremental.</p></div>
+          <div class="plates fit quad"><img src="assets/work/ezel.png" width="300" height="200" alt="A dense multi-colour scatter plot rendered by ezel"><img src="assets/work/ezel-animation.webp" width="300" height="200" alt="Animated rectangles moving between positions on a plot"><img src="assets/work/ezel-lcp.png" width="300" height="200" alt="Grouped bar chart of LCP image sizes for desktop and mobile, rendered by ezel"><img src="assets/work/ezel-terminal.webp" width="300" height="200" alt="A terminal window showing an ezel plot of a sine and cosine curve"></div></li>
+      </ul>
+      <h3 class="group">Database drivers <span class="aside">All four libraries are the fastest in the Rust and Python ecosystems.</span></h3>
+      <ul class="feats gains">
+        <li><time>2025</time><span class="icon"><img class="logo" src="assets/logos/postgresql.svg" alt="PostgreSQL logo"><img class="badge" src="assets/logos/rust.png" alt="Rust"></span><div><b><a href="https://github.com/rusticdotdev/zero-postgres">zero-postgres</a></b><span>A PostgreSQL client library for Rust.</span></div><i class="lead" aria-hidden="true"></i><p class="gain"><b>1.6x</b><span>vs tokio-postgres</span></p>
+          <div class="plates fit one"><img src="assets/work/zero-postgres-bench.svg" alt="Benchmark: zero-postgres 250 ms, tokio-postgres 399 ms, postgres 423 ms"></div></li>
+        <li><time>2025</time><span class="icon"><img class="logo" src="assets/logos/postgresql.svg" alt="PostgreSQL logo"><img class="badge" src="assets/logos/python.svg" alt="Python"></span><div><b><a href="https://github.com/rusticdotdev/pyro-postgres">pyro-postgres</a></b><span>A PostgreSQL driver for Python.</span></div><i class="lead" aria-hidden="true"></i><p class="gain"><b>3x</b><span>vs psycopg</span></p>
+          <div class="plates fit one"><img src="assets/work/pyro-postgres-bench.svg" alt="Benchmark: pyro-postgres against psycopg, execution time for SELECT and INSERT"></div></li>
+        <li><time>2025</time><span class="icon"><img class="logo" src="assets/logos/mysql.svg" alt="MySQL logo"><img class="badge" src="assets/logos/rust.png" alt="Rust"></span><div><b><a href="https://github.com/rusticdotdev/zero-mysql">zero-mysql</a></b><span>A MySQL client library for Rust.</span>
+          <p class="lede">zero-mysql understands the variants (Oracle MySQL, MariaDB, Percona) and uses the extensions whenever applicable.</p>
+          <p class="lede">For example, it implements <code>MARIADB_CLIENT_STMT_BULK_OPERATIONS</code>, which bulk-inserts much faster (20–100x) than other libraries.</p></div>
+          <div class="plates fit one"><img src="assets/work/zero-mysql-insert.svg" width="1280" height="550" alt="Violin plot of INSERT time per driver: the bulk variants take about 2 µs, the others 20 to 100 µs"></div></li>
+        <li><time>2025</time><span class="icon"><img class="logo" src="assets/logos/mysql.svg" alt="MySQL logo"><img class="badge" src="assets/logos/python.svg" alt="Python"></span><div><b><a href="https://github.com/rusticdotdev/pyro-mysql">pyro-mysql</a></b><span>A MySQL driver for Python.</span></div><i class="lead" aria-hidden="true"></i><p class="gain"><b>1.9x</b><span>vs mysqlclient</span></p>
+          <div class="plates fit one"><img src="assets/work/pyro-mysql-bench.svg" alt="Benchmark: pyro-mysql against mysqlclient, pymysql, aiomysql and asyncmy"><img src="assets/work/pyro-mysql-sqlalchemy-bench.svg" alt="Benchmark: SQLAlchemy on pyro-mysql, mysqldb and pymysql"></div></li>
+      </ul>
+    </article>
+
+    <article class="job" style="--c: var(--c1)">
+      <div class="job-head">
+        <h2>Quora</h2>
+        <img class="co-logo" src="assets/logos/quora.svg" alt="Quora logo">
+        <p class="when"><b>2022–2025</b></p>
+      </div>
+      <ul class="feats gains">
+        <li><time></time><img class="logo" src="assets/logos/poe.svg" alt="Poe logo"><div><b>Poe</b><span>poe.com</span></div><i class="lead" aria-hidden="true"></i><p class="gain"><b>300&nbsp;<svg class="arr" viewBox="0 0 26 16" role="img" aria-label="to"><path d="M1.5 8h22M16.5 1.8 23 8l-6.5 6.2"/></svg> 100&nbsp;ms</b><span>API latency</span></p>
+          <div class="more"><p class="lede">Proposed and led a modernization project.<br>Average API server latency fell from 300 ms to 100 ms.<br>TTFB on mobile and web fell by a few hundred milliseconds.</p>
+          <ul class="points">
+            <li>Wrote a Python async runtime that bridges the legacy asynq to asyncio.</li>
+            <li>Implemented a novel auto-batching scheme for concurrent SQL queries.</li>
+            <li>Tuned performance with a custom allocator, PGO and kernel settings.</li>
+            <li>Wrote asynchronous sharding clients for Redis, MySQL, memcached and others.</li>
+            <li>Fixed critical bugs in redis-py, aiomemcache and other popular Python libraries.</li>
+          </ul></div></li>
+        <li><time></time><img class="logo" src="assets/logos/quora-q.svg" alt="Quora logo"><div><b>Quora</b><span>Infra Engineer</span></div>
+          <div class="more"><p class="lede">Led the modernization of the codebase and provided technical insights.<br>Examples:</p>
+          <ul class="points">
+            <li>Replaced Redis keys that stored 100 to 100,000 timestamps for rate limits with a single integer, by implementing GCRA.</li>
+            <li>Wrote manuals for many teams, from Spark best practices for data engineers to an introduction to systemd for infra engineers.</li>
+            <li>Cut AWS costs by a few thousand dollars a day.</li>
+          </ul></div></li>
+      </ul>
+      <h3 class="group">Personal Projects</h3>
+      <ul class="feats gains">
+        <li><time>2023</time><img class="logo" src="assets/logos/mybee.png" alt="mybee logo"><div><b><a href="https://github.com/elbaro/mybee">mybee</a></b><span>An eBPF profiler for MySQL.</span>
+          <p class="lede">This is faster than other eBPF solutions because it reuses what mysqld has already parsed.</p></div>
+          <div class="plates fit one"><img src="assets/work/mybee.png" alt="Grafana panel of p95 latency per SQL statement, collected by mybee"></div></li>
+        <li><time>2023</time><span></span><div><b><a href="https://github.com/elbaro/downtown">downtown</a></b><span>A realtime BPF profiler.</span>
+          <p class="lede">On-the-fly attachment to a production process without code changes.</p></div>
+          <div class="plates fit one"><img src="assets/work/downtown.png" alt="Terminal table of min, p50, p90, p99 and max latency per source line"></div></li>
+      </ul>
+    </article>
+
+    <article class="job" style="--c: var(--c2)">
+      <div class="job-head">
+        <h2>PrestoLabs</h2>
+        <img class="co-logo" src="assets/logos/prestolabs.svg" alt="Presto Labs logo">
+        <p class="when"><b>2020–2022</b>Quant Researcher and Developer</p>
+      </div>
+      <ul class="feats logos">
+        <li><time>2021</time><img class="logo" src="assets/logos/cpp.svg" alt="C++ logo"><div><b>C++ trading framework</b>
+          <p class="lede">The Python strategies were losing their edge, so we needed a faster framework.</p>
+          <ul class="points">
+            <li>Wrote a significant portion of the new framework.</li>
+            <li>Created conda-forge packages for popular low-latency C++ libraries.
+              <ul class="points sub">
+                <li>conda-forge/mimalloc-feedstock</li>
+                <li>conda-forge/simdjson-feedstock</li>
+                <li>conda-forge/doctest-feedstock</li>
+              </ul>
+            </li>
+          </ul></div></li>
+        <li><time>2020</time><span></span><div><b><a href="https://github.com/elbaro/vitro">vitro</a></b><span>A C++ binding to matplotlib (github.com/elbaro/vitro)</span>
+          <img class="shot" src="assets/vitro.png" width="800" height="600" alt="Three histogram plots drawn with vitro: linear bins, log bins and cumulative"></div></li>
+      </ul>
+    </article>
+
+    <article class="job" style="--c: var(--c3)">
+      <div class="job-head">
+        <h2>Estsoft</h2>
+        <img class="co-logo" src="assets/logos/estsoft.png" alt="ESTsoft logo">
+        <p class="when"><b>2016–2020</b>AI Researcher</p>
+      </div>
+      <ul class="feats logos">
+        <li><time>2020</time><img class="logo" src="assets/logos/iclr.svg" alt="ICLR logo"><div><b><a href="https://arxiv.org/abs/2002.05366">Regularizing activations in neural networks via distribution matching with the Wasserstein metric</a></b><span>ICLR 2020 · with Taejong Joo and Byunghoon Kim</span>
+          <p class="lede">A regularization loss that pushes activations toward the standard normal distribution by minimizing an upper bound of the Wasserstein distance.</p></div></li>
+      </ul>
+    </article>
+
+    <article class="job" style="--c: var(--c6)">
+      <div class="job-head">
+        <h2>College</h2>
+        <img class="co-logo" src="assets/logos/mit.svg" alt="MIT logo">
+        <p class="when"><b>2011–2015</b>MIT, Computer Science and Engineering</p>
+      </div>
+      <h3 class="group">Internships</h3>
+      <ul class="feats logos">
+        <li><time>2015</time><img class="logo" src="assets/logos/google.svg" alt="Google logo"><div><b>Google</b><span>Worked on Chrome and Chromium.</span></div></li>
+        <li><time>2014</time><img class="logo" src="assets/logos/microsoft.svg" alt="Microsoft logo"><div><b>Microsoft</b><span>Built neural-network and linear-regression models for information retrieval, using CUDA and papers from 2014 ML conferences.</span></div></li>
+        <li><time>2013</time><img class="logo" src="assets/logos/indeed.svg" alt="Indeed logo"><div><b>Indeed.com</b><span>Improved search-engine quality; visualised decision trees and worked with Hadoop and Lucene.</span></div></li>
+      </ul>
+      <h3 class="group">Competitive Programming</h3>
+      <ul class="feats logos">
+        <li><time>2014</time><img class="logo" src="assets/logos/icpc.png" alt="ICPC logo"><div><b>ACM-ICPC Boston Pre-regional</b><span><svg class="medal gold" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Winner (1st)</span></div></li>
+        <li><time>2014</time><img class="logo" src="assets/logos/codejam.png" alt="Google Code Jam logo"><div><b>Google Code Jam</b><span>T-shirt winner (Top 500)</span></div></li>
+        <li><time>2013</time><img class="logo" src="assets/logos/ioi2013.png" alt="IOI 2013 logo"><div><b>International Olympiad in Informatics</b><span>Training Assistant, Korea Team</span></div></li>
+        <li><time>2011</time><img class="logo" src="assets/logos/codejam.png" alt="Google Code Jam logo"><div><b>Google Code Jam</b><span>T-shirt winner (Top 500)</span></div></li>
+        <li><time>2011</time><span></span><div><b>Startup Springboard Boston</b><span><svg class="medal silver" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Second place · “Indie movie streaming service: how to make independent movies survive?”</span></div></li>
+        <li><time>2011</time><img class="logo" src="assets/logos/icpc.png" alt="ICPC logo"><div><b>ACM-ICPC Boston</b><span><svg class="medal silver" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Second place</span></div></li>
+        <li><time>2011</time><img class="logo" src="assets/logos/ioi2011.png" alt="IOI 2011 logo"><div><b>International Olympiad in Informatics</b><span>Training Assistant, Korea Team</span></div></li>
+      </ul>
+      <h3 class="group">Projects</h3>
+      <ul class="feats logos">
+        <li><time>2015</time><img class="logo" src="assets/logos/arxiv.svg" alt="arXiv logo"><div><b><a href="https://arxiv.org/abs/1507.08139">Flow Rounding</a></b><span>with James Payor (arxiv.org/abs/1507.08139)</span>
+          <ul class="points">
+            <li>An O(m log(n²/m)) cycle-canceling algorithm for rounding a fractional flow to an integral one, covering both costed and randomized rounding.</li>
+            <li>Cited by 24 papers, 10 of them at FOCS, SODA and STOC.</li>
+          </ul></div></li>
+        <li><time>2013</time><img class="logo" src="assets/logos/mit.svg" alt="MIT logo"><div><b>Ant House, an iOS game</b><span>with Richard Park (MIT EECS)</span>
+          <ul class="points">
+            <li>Learned Objective-C, built the game, tested it with real users and presented it at a showcase. Received offers to productionize the game.</li>
+            <li>Designed a better way to use touch input in real-time strategy games on mobile.</li>
+          </ul></div></li>
+        <li><time>2013</time><img class="logo" src="assets/logos/mitmedialab.svg" alt="MIT Media Lab logo"><div><b>Project PenKey</b><span>MIT Media Lab, 2012–2013 · with Ho Jin (Samsung Electronics), supervised by Pattie Maes</span>
+          <ul class="points">
+            <li>Built a pen-shaped device that copies from and pastes to multiple Android devices.</li>
+            <li>Implemented ultrasonic communication with Android, including signal processing, embedded programming and a custom Android ROM.</li>
+            <li>Collaborated with circuit designers and 3D-printing professionals.</li>
+          </ul></div></li>
+      </ul>
+    </article>
+
+    <article class="job" style="--c: var(--c5)">
+      <div class="job-head">
+        <h2>Before college</h2>
+        <p class="when"><b>2008–2010</b>High school</p>
+      </div>
+      <ul class="feats logos">
+        <li><time>2010</time><img class="logo" src="assets/logos/ioi2010.png" alt="IOI 2010 logo"><div><b><a href="https://stats.ioinformatics.org/results/2010">International Olympiad in Informatics</a></b><span><svg class="medal gold" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Gold</span></div></li>
+        <li><time>2010</time><img class="logo" src="assets/logos/apio2010.png" alt="APIO 2010 logo"><div><b><a href="https://web.archive.org/web/20170118125631/http://apio-olympiad.org/2010/results.html">Asia-Pacific Informatics Olympiad</a></b><span><svg class="medal gold" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Gold (1st)</span></div></li>
+        <li><time>2009</time><img class="logo" src="assets/logos/ioi2009.png" alt="IOI 2009 logo"><div><b><a href="https://stats.ioinformatics.org/results/2009">International Olympiad in Informatics</a></b><span><svg class="medal gold" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Gold (5th)</span></div></li>
+        <li><time>2009</time><img class="logo" src="assets/logos/apio2009.jpg" alt="APIO 2009 logo"><div><b><a href="https://web.archive.org/web/20170212054518/http://apio-olympiad.org/2009/results.html">Asia-Pacific Informatics Olympiad</a></b><span><svg class="medal silver" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Silver</span></div></li>
+        <li><time>2009</time><img class="logo" src="assets/logos/humantech.png" alt="Samsung Humantech logo"><div><b>Samsung Human-tech Thesis Awards</b><span><svg class="medal silver" viewBox="0 0 24 24" aria-hidden="true"><use href="#medal"/></svg>Silver · “Solving Sudoku with SAT and Effective Encoding”</span></div></li>
+      </ul>
+    </article>
+  </main>
+</div>
+</body>
+</html>
