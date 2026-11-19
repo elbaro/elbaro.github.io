@@ -114,6 +114,7 @@ prek run --all-files
   "minimumReleaseAge": "7 days",
   "constraints": { "rust": "stable" },
   "vulnerabilityAlerts": { "automerge": true, "platformAutomerge": true, "commitMessageSuffix": "" },
+  "osvVulnerabilityAlerts": true,
   "prHourlyLimit": 0,
   "separateMajorMinor": false,
   "lockFileMaintenance": { "enabled": true, "commitMessageAction": "update", "commitMessageTopic": "lockfiles" },
