@@ -1,9 +1,7 @@
 ---
-title: Common Preset
+title: Common
 permalink: /preset/common/
 ---
-[Preset](../) / Common
-
 ## .pre-commit-config.yaml
 
 Git hooks, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/.pre-commit-config.yaml).

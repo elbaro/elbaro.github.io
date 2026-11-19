@@ -1,9 +1,7 @@
 ---
-title: Rust Preset
+title: Rust
 permalink: /preset/rust/
 ---
-[Preset](../) / Rust
-
 ## Cargo.toml
 
 Rustc lints, plus Clippy lints taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/Cargo.toml).

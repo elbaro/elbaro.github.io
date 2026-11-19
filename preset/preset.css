@@ -1,0 +1,267 @@
+/* ─── Palette ──────────────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: light;
+  --background: #fbfaf7;
+  --code-background: #f2f0ea;
+  --text: #1d1c1a;
+  --muted: #6b675f;
+  --border: #dedad1;
+  --accent: #a84a08;
+  --token-comment: #8a857b;
+  --token-string: #2a6b3b;
+  --token-key: #1d4f9e;
+  --token-literal: #99357a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --background: #141413;
+    --code-background: #1d1d1b;
+    --text: #e8e6e0;
+    --muted: #9a968c;
+    --border: #2f2e2a;
+    --accent: #f0a35e;
+    --token-comment: #7d796f;
+    --token-string: #9bcf9b;
+    --token-key: #8fb8f0;
+    --token-literal: #e09bc8;
+  }
+}
+
+/* ─── Page ─────────────────────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 1.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+.page {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 46rem);
+  gap: 3rem;
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ─── Sidebar ──────────────────────────────────────────────────────────────── */
+
+.sidebar {
+  position: sticky;
+  top: 3rem;
+  align-self: start;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar a {
+  display: block;
+  padding: 0.2rem 0;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.sidebar a:hover,
+.sidebar a[aria-current="page"] {
+  color: var(--text);
+}
+
+.sidebar .brand {
+  margin-bottom: 1rem;
+  color: var(--text);
+  font: 600 1.05rem/1.4 ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+}
+
+.sidebar .brand::before {
+  content: "~/";
+  color: var(--accent);
+}
+
+.sidebar a[aria-current="page"] {
+  font-weight: 600;
+}
+
+.sections {
+  margin: 0.25rem 0 0.75rem !important;
+  border-left: 1px solid var(--border);
+}
+
+.sections a {
+  padding-left: 0.85rem;
+  font: 0.8rem/1.5 ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+/* ─── Content ──────────────────────────────────────────────────────────────── */
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 3.5rem 0 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font: 600 1.15rem/1.4 ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+  overflow-wrap: anywhere;
+}
+
+h1 + h2 {
+  margin-top: 0;
+}
+
+h3 {
+  margin: 2rem 0 0.5rem;
+  font-size: 1rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+main ul {
+  padding-left: 1.25rem;
+}
+
+code {
+  font: 0.875em/1.55 ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
+}
+
+p code,
+li code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--code-background);
+}
+
+/* ─── Code Blocks ──────────────────────────────────────────────────────────── */
+
+.copyable {
+  position: relative;
+  margin: 0 0 1.25rem;
+}
+
+pre {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--code-background);
+  tab-size: 2;
+}
+
+.copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--muted);
+  font: 0.75rem/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+
+.copy:hover {
+  color: var(--text);
+  border-color: var(--muted);
+}
+
+/* ─── Syntax Tokens ────────────────────────────────────────────────────────── */
+/* Class names come from Rouge, the highlighter GitHub Pages runs. */
+
+.highlight .c,
+.highlight .c1,
+.highlight .cm {
+  color: var(--token-comment);
+  font-style: italic;
+}
+
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sx {
+  color: var(--token-string);
+}
+
+.highlight .na,
+.highlight .nl,
+.highlight .nt,
+.highlight .py {
+  color: var(--token-key);
+}
+
+.highlight .kc,
+.highlight .mi,
+.highlight .mf,
+.highlight .nb,
+.highlight .no {
+  color: var(--token-literal);
+}
+
+/* ─── Narrow Screens ───────────────────────────────────────────────────────── */
+
+@media (max-width: 50rem) {
+  .page {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem 1rem 4rem;
+  }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar .brand {
+    margin-bottom: 0.5rem;
+  }
+
+  .groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 1.25rem;
+  }
+
+  .sections {
+    display: none;
+  }
+}

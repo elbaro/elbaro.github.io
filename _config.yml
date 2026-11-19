@@ -4,3 +4,8 @@ show_downloads: true
 google_analytics:
 theme: jekyll-theme-modernist
 remote-theme: pages-themes/modernist
+defaults:
+  - scope:
+      path: "preset"
+    values:
+      layout: preset

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.url == '/preset/' %}Preset{% else %}{{ page.title }} · Preset{% endif %}</title>
+<link rel="stylesheet" href="{{ '/preset/preset.css' | relative_url }}">
+</head>
+<body>
+{%- assign groups = site.pages | where_exp: "p", "p.url contains '/preset/'" | where_exp: "p", "p.url != '/preset/'" | sort: "title" %}
+<div class="page">
+  <nav class="sidebar" aria-label="Groups">
+    <a class="brand" href="{{ '/preset/' | relative_url }}">preset</a>
+    <ul class="groups">
+      {%- for group in groups %}
+      <li{% if group.url == page.url %} class="current"{% endif %}>
+        <a href="{{ group.url | relative_url }}"{% if group.url == page.url %} aria-current="page"{% endif %}>{{ group.title }}</a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </nav>
+  <main>
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+  </main>
+</div>
+<script>
+// ─── Section Links ───────────────────────────────────────────────────────────
+// Lists the current page's h2 sections under its group in the sidebar.
+const currentGroup = document.querySelector('.groups .current');
+const sections = document.querySelectorAll('main h2[id]');
+if (currentGroup && sections.length > 0) {
+  const list = document.createElement('ul');
+  list.className = 'sections';
+  for (const section of sections) {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#' + section.id;
+    link.textContent = section.textContent;
+    item.append(link);
+    list.append(item);
+  }
+  currentGroup.append(list);
+}
+
+// ─── Copy Buttons ────────────────────────────────────────────────────────────
+for (const block of document.querySelectorAll('main pre')) {
+  const container = block.closest('.highlighter-rouge') ?? block;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'copy';
+  button.textContent = 'Copy';
+  button.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(block.textContent);
+      button.textContent = 'Copied';
+    } catch (error) {
+      // The clipboard is unavailable (insecure origin or denied permission):
+      // select the code so the reader can copy it with the keyboard.
+      window.getSelection().selectAllChildren(block);
+      button.textContent = 'Press Ctrl+C';
+    }
+    setTimeout(() => { button.textContent = 'Copy'; }, 1500);
+  });
+  container.classList.add('copyable');
+  container.append(button);
+}
+</script>
+</body>
+</html>
