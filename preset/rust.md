@@ -99,6 +99,17 @@ unused_result_ok = "warn"
 verbose_file_reads = "warn"
 ```
 
+## clippy.toml
+
+Clippy settings, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/clippy.toml).
+They only matter once `expect_used` or `unwrap_used` is enabled.
+
+```toml
+allow-expect-in-tests = true
+allow-unwrap-in-consts = true
+allow-unwrap-in-tests = true
+```
+
 ## deny.toml
 
 [cargo-deny](https://github.com/EmbarkStudios/cargo-deny) config, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/deny.toml).
