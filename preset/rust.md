@@ -56,6 +56,7 @@ map_with_unused_argument_over_ranges = "warn"
 mem_forget = "warn"
 missing_asserts_for_indexing = "warn"
 mixed_read_write_in_expression = "warn"
+modulo_arithmetic = "warn"
 multiple_inherent_impl = "warn"
 multiple_unsafe_ops_per_block = "warn"
 mutex_atomic = "warn"
@@ -83,6 +84,7 @@ shadow_same = "warn"
 shadow_unrelated = "warn"
 string_add = "warn"
 string_lit_chars_any = "warn"
+string_slice = "warn"
 suspicious_xor_used_as_pow = "warn"
 todo = "warn"
 undocumented_unsafe_blocks = "warn"
@@ -97,10 +99,23 @@ unused_result_ok = "warn"
 verbose_file_reads = "warn"
 ```
 
+## src/lib.rs
+
+Unwrap lints, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/src/lib.rs).
+They sit in the crate root instead of `Cargo.toml` so they cover the library only; `[lints]` in `Cargo.toml` also applies to `tests/`, `examples/` and `benches/`.
+
+```rust
+#![warn(
+    clippy::expect_used,
+    clippy::get_unwrap,
+    clippy::unwrap_used
+)]
+```
+
 ## clippy.toml
 
 Clippy settings, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/clippy.toml).
-They only matter once `expect_used` or `unwrap_used` is enabled.
+They relax the `expect_used` and `unwrap_used` lints from `src/lib.rs` above inside unit tests and `const` contexts.
 
 ```toml
 allow-expect-in-tests = true
@@ -118,7 +133,6 @@ Adjust `licenses.allow` to the licenses your dependencies use.
 all-features = true
 
 [licenses]
-version = 2
 allow = [
     "BlueOak-1.0.0",
     "Apache-2.0",
@@ -129,9 +143,6 @@ allow = [
     "Zlib",
     "CDLA-Permissive-2.0",
 ]
-
-[advisories]
-version = 2
 
 [bans]
 multiple-versions = "warn"
