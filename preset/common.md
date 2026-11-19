@@ -4,9 +4,6 @@ permalink: /preset/common/
 ---
 ## .pre-commit-config.yaml
 
-Git hooks. Run them with [prek](https://github.com/j178/prek); `repo: builtin` and `priority` do not work with `pre-commit`.
-Hooks with the same `priority` run in parallel, so the ones that rewrite files each get their own slot or touch different file types.
-
 ```yaml
 default_install_hook_types:
   - pre-commit
@@ -96,23 +93,15 @@ repos:
 
 ### Initial setup
 
-Run once after cloning. It installs the `pre-commit` and `commit-msg` hooks
-listed in `default_install_hook_types`, and downloads the hook environments.
-
 ```sh
 prek install --prepare-hooks
 ```
-
-Check the whole repository once:
 
 ```sh
 prek run --all-files
 ```
 
 ## .github/renovate.json
-
-[Renovate](https://docs.renovatebot.com/) config, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/.github/renovate.json).
-It groups every update into one `deps:` pull request, waits 7 days after a release, and automerges only vulnerability fixes.
 
 {% raw %}
 ```json
@@ -148,16 +137,11 @@ It groups every update into one `deps:` pull request, waits 7 days after a relea
 
 ## .github/pull_request_template.md
 
-The checkbox that `cla.yml` below looks for, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/.github/pull_request_template.md).
-
 ```markdown
 - [ ] I grant the repository owner the [Blue Oak Contributor License Version 1.0.0](https://blueoakcouncil.org/contributor/1.0.0) for my contributions to the repository.
 ```
 
 ## .github/workflows/cla.yml
-
-Fails a pull request until the author ticks the [Blue Oak Contributor License](https://blueoakcouncil.org/contributor/1.0.0) checkbox in the PR description, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/.github/workflows/cla.yml).
-The checkbox line comes from the `.github/pull_request_template.md` above. Replace `elbaro` with the repository owner's login.
 
 {% raw %}
 ```yaml

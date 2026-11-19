@@ -4,10 +4,6 @@ permalink: /preset/rust/
 ---
 ## Cargo.toml
 
-Rustc lints, plus Clippy lints taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/Cargo.toml).
-In a workspace, rename the tables to `[workspace.lints.rust]` and
-`[workspace.lints.clippy]`, and add `[lints] workspace = true` to each member.
-
 ```toml
 [lints.rust]
 non_ascii_idents = "forbid"
@@ -101,9 +97,6 @@ verbose_file_reads = "warn"
 
 ## src/lib.rs
 
-Unwrap lints, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/src/lib.rs).
-They sit in the crate root instead of `Cargo.toml` so they cover the library only; `[lints]` in `Cargo.toml` also applies to `tests/`, `examples/` and `benches/`.
-
 ```rust
 #![warn(
     clippy::expect_used,
@@ -114,9 +107,6 @@ They sit in the crate root instead of `Cargo.toml` so they cover the library onl
 
 ## clippy.toml
 
-Clippy settings, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/clippy.toml).
-They relax the `expect_used` and `unwrap_used` lints from `src/lib.rs` above inside unit tests and `const` contexts.
-
 ```toml
 allow-expect-in-tests = true
 allow-unwrap-in-consts = true
@@ -124,9 +114,6 @@ allow-unwrap-in-tests = true
 ```
 
 ## deny.toml
-
-[cargo-deny](https://github.com/EmbarkStudios/cargo-deny) config, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/deny.toml).
-Adjust `licenses.allow` to the licenses your dependencies use.
 
 ```toml
 [graph]
@@ -159,8 +146,6 @@ cargo deny check
 
 ## .github/workflows/cargo-deny.yml
 
-Runs cargo-deny with the `deny.toml` above, taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/.github/workflows/cargo-deny.yml).
-
 ```yaml
 name: cargo deny
 
@@ -184,9 +169,6 @@ jobs:
 ```
 
 ## .github/workflows/release.yml
-
-Opens release PRs and publishes to crates.io with [release-plz](https://release-plz.dev/), taken from [zero-postgres](https://github.com/elbaro/zero-postgres/blob/main/.github/workflows/release.yml).
-`id-token: write` is for crates.io trusted publishing, so no registry token is stored.
 
 {% raw %}
 ```yaml
